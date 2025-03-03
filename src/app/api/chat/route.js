@@ -2,7 +2,6 @@ import axios from "axios";
 const account_Id="5ec7818390529c16f71915956d283d89";
 const token="_0elvA0_TDgQZSz9pPJJ9wErRyeQIm0E8HJF2ibK";
 export async function POST(req, res) {
- console.log(req.url);
   const { method, body } = req;
 
   if (method !== 'POST') {
@@ -29,7 +28,9 @@ export async function POST(req, res) {
     return new Response(JSON.stringify(response.data), {
       status: response.status,
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST",
       },
     });
   } catch (error) {
