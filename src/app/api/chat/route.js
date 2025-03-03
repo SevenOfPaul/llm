@@ -36,10 +36,12 @@ export async function POST(req, res) {
   } catch (error) {
     // 处理错误并返回错误响应
     return new Response(error, {
-      status: '500',
+      status: "500",
       headers: {
-        'Content-Type': 'application/json',
-      }
-  });
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "POST",
+      },
+    });
 }
 }
