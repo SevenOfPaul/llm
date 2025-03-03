@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { Button, Input, Select, Typography } from 'antd';
-import axios from "@/lib/api";
+import connect from "@/lib/api";
 import langs from './Language';
 
 const { TextArea } = Input;
