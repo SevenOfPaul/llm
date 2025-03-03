@@ -1,6 +1,6 @@
 import axios from "axios";
-const account_Id="5ec7818390529c16f71915956d283d89";
-const token="_0elvA0_TDgQZSz9pPJJ9wErRyeQIm0E8HJF2ibK";
+const account_Id = process.env.account_Id;
+const token = process.env.token;
 export async function POST(req, res) {
   const { method, body } = req;
 
