@@ -5,6 +5,9 @@ import SakanaWidget from 'sakana-widget';
 
 const About = () => {
     useEffect(() => {
+        if (typeof window === 'undefined') {
+            return;
+        }
         const tuanzi = SakanaWidget.getCharacter('chisato');
         tuanzi.image = `${process.env.PUBLIC_URL}/static/tuanzi.png`;
         SakanaWidget.registerCharacter('tuanzi', tuanzi);

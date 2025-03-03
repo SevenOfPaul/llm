@@ -63,7 +63,7 @@ function ImageClassification() {
   }, [results]);
 
   useEffect(() => {
-    if (!document.getElementById('chart') || results.length === 0) {
+    if (typeof window === 'undefined' || !document.getElementById('chart') || results.length === 0) {
       return;
     }
     const chart = echarts.init(document.getElementById('chart'));

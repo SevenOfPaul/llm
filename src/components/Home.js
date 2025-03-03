@@ -1,22 +1,23 @@
 "use client";
-import React, { useEffect } from 'react';
+import React from 'react';
 import { CapsuleTabs } from 'antd-mobile';
-import { Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { Layout, message } from 'antd';
+import { useRouter } from 'next/navigation';
+import { Layout } from 'antd';
+import TextGeneration from './TextGeneration';
+import Translation from './Translation';
+import ImageClassification from './ImageClassification';
+import TextToImage from './Text2Image';
+import About from './About';
 
 const { Content } = Layout;
 // message.info("未做PC端适配，建议用手机访问");
-const Home = () => {
-  useEffect(() => {
-    // document.title = "Workers AI";
-  }, []);
 
-  const location = useLocation();
-  const navigate = useNavigate();
+const Home = ({ pathname }) => {
+  const router = useRouter();
 
   // 根据当前的路由来设置activeKey
   let activeKey;
-  switch (location.pathname) {
+  switch (pathname) {
     case '/text-generation':
       activeKey = '1';
       break;
@@ -43,25 +44,43 @@ const Home = () => {
   const handleTabClick = (key) => {
     switch (key) {
       case '1':
-        navigate('/text-generation');
+        router.push('/text-generation');
         break;
       // case '2':
       //   navigate('/speech-recognition');
       //   break;
       case '3':
-        navigate('/text-translation');
+        router.push('/text-translation');
         break;
       case '4':
-        navigate('/image-classification');
+        router.push('/image-classification');
         break;
       case '5':
-        navigate('/text-to-image');
+        router.push('/text-to-image');
         break;
       case '6':
-        navigate('/about');
+        router.push('/about');
         break;
       default:
         break;
+    }
+  };
+
+  // 渲染当前路由对应的组件
+  const renderContent = () => {
+    switch (pathname) {
+      case '/text-generation':
+        return <TextGeneration />;
+      case '/text-translation':
+        return <Translation />;
+      case '/image-classification':
+        return <ImageClassification />;
+      case '/text-to-image':
+        return <TextToImage />;
+      case '/about':
+        return <About />;
+      default:
+        return <TextGeneration />;
     }
   };
 
@@ -83,10 +102,9 @@ const Home = () => {
         </div>
       </div>
       <Content>
-        <Outlet />
+        {renderContent()}
       </Content>
     </div>
-
   );
 };
 
