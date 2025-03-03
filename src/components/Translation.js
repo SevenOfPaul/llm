@@ -12,7 +12,7 @@ const TranslationPage = () => {
   const [translation, setTranslation] = useState('');
   const [sourceLang, setSourceLang] = useState('english');
   const [targetLang, setTargetLang] = useState('chinese');
-  const model = '@cf/meta/m2m100-1.2b';
+  const model = "@cf/meta/m2m100-1.2b";
   const handleSwapLanguages = () => {
     setSourceLang(targetLang);
     setTargetLang(sourceLang);
@@ -24,7 +24,7 @@ const TranslationPage = () => {
       "source_lang": sourceLang,
       "target_lang": targetLang,
     };
-    connect.post('',{prompt,url:`${model}`})
+    connect.post('',{...prompt,url:`${model}`})
       .then((res) => {
         setTranslation(res.data.result.translated_text);
       })
