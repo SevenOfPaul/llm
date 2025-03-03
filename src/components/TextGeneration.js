@@ -7,7 +7,7 @@ import models from "@/lib/models";
 const TextGeneration = () => {
     const [value, setValue] = useState('');
     const [generatedText, setGeneratedText] = useState([]);
-    const model =models.get('text-generation');
+    const model = models.get("textGeneration");
     const messagesEndRef = useRef(null);
     const [loading, setLoading] = useState(false); // 新增状态变量
 
