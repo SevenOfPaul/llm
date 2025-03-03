@@ -20,7 +20,7 @@ function ImageClassification() {
       const model = '@cf/microsoft/resnet-50';
       const blob = new Blob([arrayBuffer]);
 
-      connect.post({url:`/${model}`, blob}, {
+      connect.post({url:`${model}`, blob}, {
         headers: {
           'Content-Type': 'application/octet-stream'
         }

@@ -18,7 +18,7 @@ const TextGeneration = () => {
         ];
         setLoading(true); // 在请求开始时，将loading设置为true
         setValue(''); // 清空输入框
-        connect.post('',{messages,url:`/${model}`})
+        connect.post('',{messages,url:`${model}`})
             .then((res) => {
                 setGeneratedText(prevTexts => [...prevTexts, { role: 'You', content: value }, { role: 'AI', content: res.data.result.response }]);
             })

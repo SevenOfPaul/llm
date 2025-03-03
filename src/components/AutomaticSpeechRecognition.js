@@ -30,7 +30,7 @@ const SpeechRecognsition = () => {
     reader.onloadend = () => {
       const formData = new FormData();
       formData.append('file', reader.result);
-      connect.post( {url:`/${model}`,formData}, {
+      connect.post( {url:`${model}`,formData}, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -56,7 +56,7 @@ const SpeechRecognsition = () => {
         reader.onloadend = () => {
           const formData = new FormData();
           formData.append('file', reader.result);
-          connect.post(`/${model}`, formData, {
+          connect.post(`${model}`, formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }

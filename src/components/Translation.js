@@ -24,7 +24,7 @@ const TranslationPage = () => {
       "source_lang": sourceLang,
       "target_lang": targetLang,
     };
-    connect.post('',{prompt,url:`/${model}`})
+    connect.post('',{prompt,url:`${model}`})
       .then((res) => {
         setTranslation(res.data.result.translated_text);
       })

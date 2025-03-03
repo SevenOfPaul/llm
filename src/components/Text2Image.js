@@ -17,7 +17,7 @@ const Text2Image = () => {
         setImageUrl(null);
         setLoading(true); // 在请求开始时，将loading设置为true
 
-        connect.post({url:`/${model}`, prompt }, { responseType: 'blob' })
+        connect.post({url:`${model}`, prompt }, { responseType: 'blob' })
             .then((res) => {
                 setTitle(value);
                 setValue('');
