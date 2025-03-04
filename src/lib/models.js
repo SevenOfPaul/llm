@@ -9,7 +9,7 @@ export default new Map([
   ["imageGeneration", "@cf/bytedance/stable-diffusion-xl-lightning"],
   [
     //文本生成
-    ("textGeneration", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b"),
+    "textGeneration", "@cf/deepseek-ai/deepseek-r1-distill-qwen-32b",
   ],
   //文本翻译
   ["textTranslation", "@cf/meta/m2m100-1.2b"],
