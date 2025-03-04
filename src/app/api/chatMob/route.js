@@ -14,7 +14,7 @@ export async function GET(req, res) {
           return Response.json({ message: "请先登陆" },{status:401});
         }else{
           const data =
-            await sql`SELECT * FROM Sessions WHERE userid = ${userData[0]}`;
+            await sql`SELECT content FROM Sessions WHERE userid = ${userData[0]}`;
           return Response.json(data,{status:200});
         }
   }
