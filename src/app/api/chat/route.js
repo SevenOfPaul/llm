@@ -7,13 +7,12 @@ export async function POST(req, res) {
 
   if (method !== "POST") {
     res.setHeader("Allow", ["POST"]);
-    return res.status(405).end(`Method ${method} Not Allowed`);
+    return Response.json({ message: "Method Not Allowed" },{status:405});
   }
   try {
     const body = await req.json();
     const path = body.url;
     delete body.url;
-    console.log(body, path);
     // 目标API的URL
     const targetUrl = `https://api.cloudflare.com/client/v4/accounts/${account_Id}/ai/run/${path}`;
     console.log(targetUrl);
@@ -24,7 +23,6 @@ export async function POST(req, res) {
         Authorization: `Bearer ${token}`,
       },
     });
-    console.log(typeof response.data);
     // 将目标API的响应返回给客户端
     return new Response(JSON.stringify(response.data), {
       status: response.status,
