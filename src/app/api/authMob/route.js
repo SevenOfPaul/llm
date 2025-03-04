@@ -38,6 +38,21 @@ export async function GET(req, res) {
     }else{
      return Response.json({ message: "账号密码错误" },{status:403});
   }
+  }  
+}
+export async function DELETE(req, res) {
+  const { method } = req;
+  if (method !== "DELETE") {
+    res.setHeader("Allow", ["DELETE"]);
+    return Response.json({ message: "Method Not Allowed" }, { status: 405 });
+  } else {
+    const { token } = Query(req, ["token"]);
+    //
+    if (token) {
+        await sql` DELETE token FROM users WHERE token = ${token}`;
+        return Response.json({ message: "退出成功" }, { status: 200 });
+    } else {
+      return Response.json({ message: "错误，请稍后重试" }, { status: 403 });
+    }
   }
-   
 }
